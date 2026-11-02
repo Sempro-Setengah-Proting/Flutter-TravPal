@@ -1,4 +1,4 @@
-# trav_pal_flutter
+# TravPal-Flutter
 
 A new Flutter project.
 
