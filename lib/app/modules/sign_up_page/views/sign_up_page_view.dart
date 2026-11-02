@@ -70,6 +70,9 @@ class SignUpPageView extends GetView<SignUpPageController> {
                           color: AppColor.appBackground,
                         ),
                         label: "Sign Up",
+                        onPressed: () {
+                          Get.toNamed(Routes.HOME);
+                        },
                       ),
                       AppSpacing.sby24,
                       Row(

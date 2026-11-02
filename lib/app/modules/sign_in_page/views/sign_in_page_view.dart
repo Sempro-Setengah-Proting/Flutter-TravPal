@@ -41,16 +41,33 @@ class SignInPageView extends GetView<SignInPageController> {
               const AppTextField(label: 'Name'),
               AppSpacing.sby12,
               const AppTextField(
-                label: 'Email',
-                hintText: 'you@example.com',
+                label: 'Password',
+                hintText: '********',
                 keyboardType: TextInputType.emailAddress,
               ),
-              AppSpacing.sby40,
+              Align(
+                alignment: Alignment.centerRight,
+                child: TextButton(
+                  onPressed: () {},
+                  style: TextButton.styleFrom(
+                    foregroundColor: AppColor.appPrimary,
+                    textStyle: AppFont.appRegular14,
+                    alignment: Alignment.centerLeft,
+                    overlayColor: Colors.transparent,
+                    splashFactory: NoSplash.splashFactory,
+                  ),
+                  child: const Text('Forgot Password?'),
+                ),
+              ),
+              AppSpacing.sby12,
               AppButton(
                 labelStyle: AppFont.appSemiBold18.copyWith(
                   color: AppColor.appBackground,
                 ),
                 label: "Log In",
+                onPressed: () {
+                  Get.toNamed(Routes.HOME);
+                },
               ),
               AppSpacing.sby24,
               Row(
