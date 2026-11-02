@@ -38,6 +38,8 @@ dependencies:
   google_fonts: ^9.0.0
   flutter_svg: ^2.3.2
   lottie: ^3.8.1
+  cupertino_ui: ^1.1.5
+  cupertino_native: ^0.1.1
 
 dev_dependencies:
   flutter_test:

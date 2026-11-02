@@ -8,6 +8,9 @@ abstract class Routes {
   static const SIGN_UP_PAGE = _Paths.SIGN_UP_PAGE;
   static const SPLASH_SCREEN_PAGE = _Paths.SPLASH_SCREEN_PAGE;
   static const SIGN_IN_PAGE = _Paths.SIGN_IN_PAGE;
+  static const EXPLORE_PAGE = _Paths.EXPLORE_PAGE;
+  static const MY_TRIP_PAGE = _Paths.MY_TRIP_PAGE;
+  static const PROFILE_PAGE = _Paths.PROFILE_PAGE;
 }
 
 abstract class _Paths {
@@ -17,4 +20,7 @@ abstract class _Paths {
   static const SIGN_UP_PAGE = '/sign-up-page';
   static const SPLASH_SCREEN_PAGE = '/splash-screen-page';
   static const SIGN_IN_PAGE = '/sign-in-page';
+  static const EXPLORE_PAGE = '/explore-page';
+  static const MY_TRIP_PAGE = '/my-trip-page';
+  static const PROFILE_PAGE = '/profile-page';
 }
