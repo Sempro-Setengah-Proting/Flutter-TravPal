@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
+import 'package:trav_pal_flutter/app/modules/sign_in_page/bindings/sign_in_page_binding.dart';
+import 'package:trav_pal_flutter/app/modules/sign_in_page/views/sign_in_page_view.dart';
 
 import '../../../routes/app_pages.dart';
-import '../../sign_up_page/bindings/sign_up_page_binding.dart';
-import '../../sign_up_page/views/sign_up_page_view.dart';
 import '../widgets/splash_logo_reveal.dart';
 
 class SplashScreenPageController extends GetxController {
@@ -30,27 +30,27 @@ class SplashScreenPageController extends GetxController {
 
     final overlay = Get.key.currentState?.overlay;
     if (overlay == null) {
-      _openSignUp();
+      _openSignIn();
       return;
     }
 
     _splashOverlay = OverlayEntry(
       builder: (_) => SplashLogoReveal(
         composition: composition,
-        onReady: _openSignUp,
+        onReady: _openSignIn,
         onCompleted: _removeOverlay,
       ),
     );
     overlay.insert(_splashOverlay!);
   }
 
-  void _openSignUp() {
+  void _openSignIn() {
     if (_navigationStarted || isClosed) return;
     _navigationStarted = true;
     Get.offAll<void>(
-      () => const SignUpPageView(),
-      binding: SignUpPageBinding(),
-      routeName: Routes.SIGN_UP_PAGE,
+      () => const SignInPageView(),
+      binding: SignInPageBinding(),
+      routeName: Routes.SIGN_IN_PAGE,
       transition: Transition.noTransition,
       duration: Duration.zero,
     );
