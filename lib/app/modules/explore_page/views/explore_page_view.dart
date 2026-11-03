@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:trav_pal_flutter/app/constants/app_color.dart';
+import 'package:trav_pal_flutter/app/constants/app_font.dart';
 import 'package:trav_pal_flutter/app/constants/app_spacing.dart';
+import 'package:trav_pal_flutter/app/widgets/app_bottom_sheet.dart';
 import 'package:trav_pal_flutter/app/widgets/app_button.dart';
 import 'package:trav_pal_flutter/app/widgets/app_destination_card.dart';
 import 'package:trav_pal_flutter/app/widgets/app_search_bar.dart';
@@ -38,7 +40,97 @@ class ExplorePageView extends GetView<ExplorePageController> {
                     children: [
                       const Expanded(child: AppSearchBar()),
                       AppSpacing.sbx12,
-                      AppButtonIcon(onPressed: () {}, icon: Icons.tune_rounded),
+                      AppButtonIcon(
+                        onPressed: () {
+                          AppBottomSheet.show<void>(
+                            coverPercentage: 0.7,
+                            context: context,
+                            title: "Filter",
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Expanded(
+                                  child: SingleChildScrollView(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Place Category',
+                                          style: AppFont.appBold16.copyWith(
+                                            color: AppColor.appTextSecondary,
+                                          ),
+                                        ),
+                                        AppSpacing.sby8,
+                                        Wrap(
+                                          spacing: 8,
+                                          runSpacing: 8,
+                                          children: [
+                                            for (final category in const [
+                                              'Nature',
+                                              'Food & Drink',
+                                              'Shopping',
+                                              'Attractions',
+                                              'Hotel',
+                                              'Hostel',
+                                              'Villa',
+                                            ])
+                                              _buildFilterOption(category),
+                                          ],
+                                        ),
+                                        AppSpacing.sby24,
+                                        Text(
+                                          'Rating',
+                                          style: AppFont.appBold16.copyWith(
+                                            color: AppColor.appTextSecondary,
+                                          ),
+                                        ),
+                                        AppSpacing.sby8,
+                                        Wrap(
+                                          spacing: 8,
+                                          runSpacing: 8,
+                                          children: [
+                                            for (final rating in const [
+                                              '5',
+                                              '≥4',
+                                              '≥3',
+                                              '≥2',
+                                              '≥1',
+                                            ])
+                                              _buildFilterOption('$rating ☆'),
+                                          ],
+                                        ),
+                                        AppSpacing.sby24,
+                                        Text(
+                                          'Suitable For',
+                                          style: AppFont.appBold16.copyWith(
+                                            color: AppColor.appTextSecondary,
+                                          ),
+                                        ),
+                                        AppSpacing.sby8,
+                                        Wrap(
+                                          spacing: 8,
+                                          runSpacing: 8,
+                                          children: [
+                                            for (final audience in const [
+                                              'Family',
+                                              'Couple',
+                                              'Group',
+                                              'Solo',
+                                            ])
+                                              _buildFilterOption(audience),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                        icon: Icons.tune_rounded,
+                      ),
                     ],
                   ),
                   AppSpacing.sby16,
@@ -61,6 +153,15 @@ class ExplorePageView extends GetView<ExplorePageController> {
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildFilterOption(String label) {
+    return AppButton(
+      label: label,
+      labelStyle: AppFont.appRegular12.copyWith(color: Colors.white),
+      shrinkWrap: true,
+      onPressed: () {},
     );
   }
 }

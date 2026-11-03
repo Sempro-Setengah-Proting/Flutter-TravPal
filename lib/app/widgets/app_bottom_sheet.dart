@@ -13,14 +13,16 @@ class AppBottomSheet extends StatelessWidget {
     required this.child,
     this.cancelText = 'Cancel',
     this.saveText = 'Save',
+    this.coverPercentage = 0.86,
     this.onCancel,
     this.onSave,
-  });
+  }) : assert(coverPercentage > 0 && coverPercentage <= 1);
 
   final String title;
   final Widget child;
   final String cancelText;
   final String saveText;
+  final double coverPercentage;
   final VoidCallback? onCancel;
   final VoidCallback? onSave;
 
@@ -30,6 +32,7 @@ class AppBottomSheet extends StatelessWidget {
     required Widget child,
     String cancelText = 'Cancel',
     String saveText = 'Save',
+    double coverPercentage = 0.86,
     VoidCallback? onCancel,
     VoidCallback? onSave,
   }) {
@@ -46,6 +49,7 @@ class AppBottomSheet extends StatelessWidget {
         title: title,
         cancelText: cancelText,
         saveText: saveText,
+        coverPercentage: coverPercentage,
         onCancel: onCancel,
         onSave: onSave,
         child: child,
@@ -97,7 +101,7 @@ class AppBottomSheet extends StatelessWidget {
         _sheetInset + mediaQuery.viewInsets.bottom,
       ),
       child: SizedBox(
-        height: mediaQuery.size.height * 0.86,
+        height: mediaQuery.size.height * coverPercentage,
         child: ClipRSuperellipse(
           borderRadius: borderRadius,
           child: DecoratedBox(
@@ -115,6 +119,7 @@ class AppBottomSheet extends StatelessWidget {
               child: SafeArea(
                 top: false,
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     SizedBox(
                       height: 64,
@@ -175,7 +180,7 @@ class AppBottomSheet extends StatelessWidget {
                     ),
                     Expanded(
                       child: Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 28, 20, 24),
+                        padding: const EdgeInsets.fromLTRB(20, 8, 20, 0),
                         child: child,
                       ),
                     ),

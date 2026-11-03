@@ -10,16 +10,18 @@ class AppButton extends StatelessWidget {
     required this.labelStyle,
     required this.label,
     required this.onPressed,
+    this.shrinkWrap = false,
   });
 
   final TextStyle labelStyle;
   final String label;
   final VoidCallback onPressed;
+  final bool shrinkWrap;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: double.infinity,
+      width: shrinkWrap ? null : double.infinity,
       height: 50,
       child: TextButton(
         onPressed: onPressed,
