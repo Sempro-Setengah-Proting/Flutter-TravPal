@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:trav_pal_flutter/app/constants/app_spacing.dart';
+import 'package:trav_pal_flutter/app/data/models/my_trip/my_trip_card_model.dart';
+import 'package:trav_pal_flutter/app/widgets/app_search_bar.dart';
+import 'package:trav_pal_flutter/app/widgets/my_trip_card.dart';
 
 import '../../../constants/app_color.dart';
 import '../controllers/my_trip_page_controller.dart';
@@ -30,10 +34,87 @@ class MyTripPageView extends GetView<MyTripPageController> {
           elevation: 0,
           scrolledUnderElevation: 0,
         ),
-        body: const Center(
-          child: Text(
-            'MyTripPageView is working',
-            style: TextStyle(fontSize: 20),
+        body: SingleChildScrollView(
+          child: SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Column(
+                children: [
+                  AppSearchBar(hintText: 'Search trips'),
+                  AppSpacing.sby16,
+                  MyTripCard(
+                    myTrip: MyTripCardModel(
+                      tripName: 'Liburan Bali',
+                      destinations: ['Ubud', 'Kuta'],
+                      startDate: DateTime(2026, 12, 10),
+                      endDate: DateTime(2026, 12, 15),
+                      imagePath: "test",
+                    ),
+                  ),
+                  AppSpacing.sby12,
+                  MyTripCard(
+                    myTrip: MyTripCardModel(
+                      tripName: 'Liburan Bali',
+                      destinations: ['Ubud', 'Kuta'],
+                      startDate: DateTime(2026, 12, 10),
+                      endDate: DateTime(2026, 12, 15),
+                      imagePath: "test",
+                    ),
+                  ),
+                  AppSpacing.sby12,
+                  MyTripCard(
+                    myTrip: MyTripCardModel(
+                      tripName: 'Liburan Bali',
+                      destinations: ['Ubud', 'Kuta'],
+                      startDate: DateTime(2026, 12, 10),
+                      endDate: DateTime(2026, 12, 15),
+                      imagePath: "test",
+                    ),
+                  ),
+                  AppSpacing.sby12,
+                  MyTripCard(
+                    myTrip: MyTripCardModel(
+                      tripName: 'Liburan Bali',
+                      destinations: ['Ubud', 'Kuta'],
+                      startDate: DateTime(2026, 12, 10),
+                      endDate: DateTime(2026, 12, 15),
+                      imagePath: "test",
+                    ),
+                  ),
+                  AppSpacing.sby12,
+                  MyTripCard(
+                    myTrip: MyTripCardModel(
+                      tripName: 'Liburan Bali',
+                      destinations: ['Ubud', 'Kuta'],
+                      startDate: DateTime(2026, 12, 10),
+                      endDate: DateTime(2026, 12, 15),
+                      imagePath: "test",
+                    ),
+                  ),
+                  AppSpacing.sby12,
+                  MyTripCard(
+                    myTrip: MyTripCardModel(
+                      tripName: 'Liburan Bali',
+                      destinations: ['Ubud', 'Kuta'],
+                      startDate: DateTime(2026, 12, 10),
+                      endDate: DateTime(2026, 12, 15),
+                      imagePath: "test",
+                    ),
+                  ),
+                  AppSpacing.sby12,
+                  MyTripCard(
+                    myTrip: MyTripCardModel(
+                      tripName: 'Liburan Bali',
+                      destinations: ['Ubud', 'Kuta'],
+                      startDate: DateTime(2026, 12, 10),
+                      endDate: DateTime(2026, 12, 15),
+                      imagePath: "test",
+                    ),
+                  ),
+                  AppSpacing.sby12,
+                ],
+              ),
+            ),
           ),
         ),
       ),
