@@ -2,8 +2,8 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-import '../constants/app_color.dart';
 import '../constants/app_font.dart';
+import 'app_button.dart';
 
 class AppSliverAppBar extends StatelessWidget {
   const AppSliverAppBar({
@@ -32,23 +32,6 @@ class AppSliverAppBar extends StatelessWidget {
   final IconData? leadingIcon;
   final VoidCallback? onLeadingPressed;
 
-  Widget _buildIconButton({required IconData icon, VoidCallback? onPressed}) {
-    return IconButton.filled(
-      style: const ButtonStyle(
-        fixedSize: WidgetStatePropertyAll(Size(44, 44)),
-        minimumSize: WidgetStatePropertyAll(Size(44, 44)),
-        maximumSize: WidgetStatePropertyAll(Size(44, 44)),
-        padding: WidgetStatePropertyAll(EdgeInsets.zero),
-        shape: WidgetStatePropertyAll(CircleBorder()),
-        backgroundColor: WidgetStatePropertyAll(AppColor.appSecondary),
-        foregroundColor: WidgetStatePropertyAll(AppColor.appPrimary),
-        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-      ),
-      onPressed: onPressed,
-      icon: Icon(icon),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
@@ -61,7 +44,7 @@ class AppSliverAppBar extends StatelessWidget {
       leading: leadingIconButton
           ? Padding(
               padding: const EdgeInsets.only(left: 16),
-              child: _buildIconButton(
+              child: AppButtonIcon(
                 icon: leadingIcon!,
                 onPressed: onLeadingPressed,
               ),
@@ -69,7 +52,7 @@ class AppSliverAppBar extends StatelessWidget {
           : null,
       title: Text(title, style: AppFont.appBold16),
       actions: actionIconButton
-          ? [_buildIconButton(icon: actionIcon!, onPressed: onActionPressed)]
+          ? [AppButtonIcon(icon: actionIcon!, onPressed: onActionPressed)]
           : null,
       actionsPadding: actionIconButton
           ? const EdgeInsets.only(right: 16)

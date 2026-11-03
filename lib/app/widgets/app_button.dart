@@ -34,3 +34,42 @@ class AppButton extends StatelessWidget {
     );
   }
 }
+
+class AppButtonIcon extends StatelessWidget {
+  const AppButtonIcon({
+    super.key,
+    required this.icon,
+    this.onPressed,
+    this.buttonWidth,
+    this.buttonHeight,
+  });
+
+  final IconData icon;
+  final double? buttonWidth;
+  final double? buttonHeight;
+  final VoidCallback? onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton.filled(
+      style: ButtonStyle(
+        fixedSize: WidgetStatePropertyAll(
+          Size(buttonWidth ?? 44, buttonHeight ?? 44),
+        ),
+        minimumSize: WidgetStatePropertyAll(
+          Size(buttonWidth ?? 44, buttonHeight ?? 44),
+        ),
+        maximumSize: WidgetStatePropertyAll(
+          Size(buttonWidth ?? 44, buttonHeight ?? 44),
+        ),
+        padding: WidgetStatePropertyAll(EdgeInsets.zero),
+        shape: WidgetStatePropertyAll(CircleBorder()),
+        backgroundColor: WidgetStatePropertyAll(AppColor.appSecondary),
+        foregroundColor: WidgetStatePropertyAll(AppColor.appPrimary),
+        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+      ),
+      onPressed: onPressed,
+      icon: Icon(icon),
+    );
+  }
+}

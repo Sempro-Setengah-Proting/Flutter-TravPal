@@ -36,7 +36,6 @@ class MyTripPageView extends GetView<MyTripPageController> {
               actionIcon: Icons.add,
               onActionPressed: () {
                 controller.resetDestinations();
-
                 AppBottomSheet.show<void>(
                   context: context,
                   title: 'Add Trip',

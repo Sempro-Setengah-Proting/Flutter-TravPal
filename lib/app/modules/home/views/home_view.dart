@@ -1,3 +1,6 @@
+import 'package:cupertino_native/components/button.dart';
+import 'package:cupertino_native/cupertino_native.dart';
+import 'package:cupertino_native/style/sf_symbol.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:trav_pal_flutter/app/constants/app_color.dart';
@@ -30,7 +33,12 @@ class HomeView extends GetView<HomeController> {
           elevation: 0,
           scrolledUnderElevation: 0,
         ),
-        body: const Center(child: Text("home page bisa")),
+        body: const Center(
+          child: CNButton.icon(
+            icon: CNSymbol("favorite"),
+            style: CNButtonStyle.glass,
+          ),
+        ),
       ),
     );
   }
