@@ -14,6 +14,8 @@ class TabBarPageView extends GetView<TabBarPageController> {
 
   @override
   Widget build(BuildContext context) {
+    final isCurrentRoute = ModalRoute.isCurrentOf(context) ?? true;
+
     return Obx(
       () => Scaffold(
         extendBody: true,
@@ -26,30 +28,32 @@ class TabBarPageView extends GetView<TabBarPageController> {
             ProfilePageView(),
           ],
         ),
-        bottomNavigationBar: SafeArea(
-          top: false,
-          bottom: false,
-          minimum: const EdgeInsets.fromLTRB(16, 0, 16, 8),
-          child: Align(
-            alignment: Alignment.bottomCenter,
-            heightFactor: 1,
-            child: CNTabBar(
-              backgroundColor: AppColor.appPrimary,
-              tint: AppColor.appPrimary,
-              items: const [
-                CNTabBarItem(label: 'Home', icon: CNSymbol('house.fill')),
-                CNTabBarItem(label: 'Explore', icon: CNSymbol('safari')),
-                CNTabBarItem(label: 'My Trip', icon: CNSymbol('map')),
-                CNTabBarItem(
-                  label: 'Profile',
-                  icon: CNSymbol('person.crop.circle'),
+        bottomNavigationBar: isCurrentRoute
+            ? SafeArea(
+                top: false,
+                bottom: false,
+                minimum: const EdgeInsets.fromLTRB(16, 0, 16, 8),
+                child: Align(
+                  alignment: Alignment.bottomCenter,
+                  heightFactor: 1,
+                  child: CNTabBar(
+                    backgroundColor: AppColor.appPrimary,
+                    tint: AppColor.appPrimary,
+                    items: const [
+                      CNTabBarItem(label: 'Home', icon: CNSymbol('house.fill')),
+                      CNTabBarItem(label: 'Explore', icon: CNSymbol('safari')),
+                      CNTabBarItem(label: 'My Trip', icon: CNSymbol('map')),
+                      CNTabBarItem(
+                        label: 'Profile',
+                        icon: CNSymbol('person.crop.circle'),
+                      ),
+                    ],
+                    currentIndex: controller.selectedTab.value,
+                    onTap: controller.selectTab,
+                  ),
                 ),
-              ],
-              currentIndex: controller.selectedTab.value,
-              onTap: controller.selectTab,
-            ),
-          ),
-        ),
+              )
+            : null,
       ),
     );
   }

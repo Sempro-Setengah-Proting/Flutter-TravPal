@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:trav_pal_flutter/app/constants/app_spacing.dart';
 import 'package:trav_pal_flutter/app/data/models/my_trip/my_trip_card_model.dart';
+import 'package:trav_pal_flutter/app/widgets/app_bottom_sheet.dart';
 import 'package:trav_pal_flutter/app/widgets/app_search_bar.dart';
 import 'package:trav_pal_flutter/app/widgets/app_sliver_app_bar.dart';
 import 'package:trav_pal_flutter/app/widgets/my_trip_card.dart';
@@ -31,7 +32,13 @@ class MyTripPageView extends GetView<MyTripPageController> {
               title: 'My Trip',
               actionIconButton: true,
               actionIcon: Icons.add,
-              onActionPressed: () {},
+              onActionPressed: () {
+                AppBottomSheet.show<void>(
+                  context: context,
+                  title: 'Add Trip',
+                  child: const SizedBox.expand(),
+                );
+              },
             ),
             SliverPadding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
