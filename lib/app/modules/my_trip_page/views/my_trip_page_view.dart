@@ -22,6 +22,7 @@ class MyTripPageView extends GetView<MyTripPageController> {
         backgroundColor: Colors.transparent,
         extendBodyBehindAppBar: true,
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           title: const Text('My Trip'),
           centerTitle: true,
           backgroundColor: Colors.transparent,

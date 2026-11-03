@@ -22,6 +22,7 @@ class ProfilePageView extends GetView<ProfilePageController> {
         backgroundColor: Colors.transparent,
         extendBodyBehindAppBar: true,
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           title: const Text(''),
           centerTitle: true,
           backgroundColor: Colors.transparent,

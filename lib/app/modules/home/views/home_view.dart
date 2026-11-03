@@ -22,6 +22,7 @@ class HomeView extends GetView<HomeController> {
         backgroundColor: Colors.transparent,
         extendBodyBehindAppBar: true,
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           title: Text(""),
           centerTitle: true,
           backgroundColor: Colors.transparent,
