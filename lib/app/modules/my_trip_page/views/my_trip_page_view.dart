@@ -1,3 +1,4 @@
+import 'package:cupertino_native/cupertino_native.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -11,6 +12,7 @@ import '../controllers/my_trip_page_controller.dart';
 
 class MyTripPageView extends GetView<MyTripPageController> {
   const MyTripPageView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return DecoratedBox(
@@ -24,97 +26,65 @@ class MyTripPageView extends GetView<MyTripPageController> {
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
-        extendBodyBehindAppBar: true,
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          title: const Text('My Trip'),
-          centerTitle: true,
-          backgroundColor: Colors.transparent,
-          surfaceTintColor: Colors.transparent,
-          elevation: 0,
-          scrolledUnderElevation: 0,
-        ),
-        body: SingleChildScrollView(
-          child: SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Column(
-                children: [
-                  AppSearchBar(hintText: 'Search trips'),
-                  AppSpacing.sby16,
-                  MyTripCard(
-                    myTrip: MyTripCardModel(
-                      tripName: 'Liburan Bali',
-                      destinations: ['Ubud', 'Kuta'],
-                      startDate: DateTime(2026, 12, 10),
-                      endDate: DateTime(2026, 12, 15),
-                      imagePath: "test",
+        body: SafeArea(
+          top: false,
+          bottom: false,
+          child: CustomScrollView(
+            slivers: [
+              SliverAppBar(
+                title: const Text('My Trip'),
+                centerTitle: true,
+                automaticallyImplyLeading: false,
+                floating: true,
+                snap: true,
+                backgroundColor: Colors.transparent,
+                surfaceTintColor: Colors.transparent,
+                scrolledUnderElevation: 0,
+                elevation: 0,
+                actions: [
+                  Padding(
+                    padding: const EdgeInsets.only(right: 16),
+                    child: IconButton.filled(
+                      style: ButtonStyle(
+                        backgroundColor: WidgetStatePropertyAll(
+                          AppColor.appSecondary,
+                        ),
+                        foregroundColor: WidgetStatePropertyAll(
+                          AppColor.appPrimary,
+                        ),
+                      ),
+                      onPressed: () {},
+                      icon: const Icon(Icons.add),
                     ),
                   ),
-                  AppSpacing.sby12,
-                  MyTripCard(
-                    myTrip: MyTripCardModel(
-                      tripName: 'Liburan Bali',
-                      destinations: ['Ubud', 'Kuta'],
-                      startDate: DateTime(2026, 12, 10),
-                      endDate: DateTime(2026, 12, 15),
-                      imagePath: "test",
-                    ),
-                  ),
-                  AppSpacing.sby12,
-                  MyTripCard(
-                    myTrip: MyTripCardModel(
-                      tripName: 'Liburan Bali',
-                      destinations: ['Ubud', 'Kuta'],
-                      startDate: DateTime(2026, 12, 10),
-                      endDate: DateTime(2026, 12, 15),
-                      imagePath: "test",
-                    ),
-                  ),
-                  AppSpacing.sby12,
-                  MyTripCard(
-                    myTrip: MyTripCardModel(
-                      tripName: 'Liburan Bali',
-                      destinations: ['Ubud', 'Kuta'],
-                      startDate: DateTime(2026, 12, 10),
-                      endDate: DateTime(2026, 12, 15),
-                      imagePath: "test",
-                    ),
-                  ),
-                  AppSpacing.sby12,
-                  MyTripCard(
-                    myTrip: MyTripCardModel(
-                      tripName: 'Liburan Bali',
-                      destinations: ['Ubud', 'Kuta'],
-                      startDate: DateTime(2026, 12, 10),
-                      endDate: DateTime(2026, 12, 15),
-                      imagePath: "test",
-                    ),
-                  ),
-                  AppSpacing.sby12,
-                  MyTripCard(
-                    myTrip: MyTripCardModel(
-                      tripName: 'Liburan Bali',
-                      destinations: ['Ubud', 'Kuta'],
-                      startDate: DateTime(2026, 12, 10),
-                      endDate: DateTime(2026, 12, 15),
-                      imagePath: "test",
-                    ),
-                  ),
-                  AppSpacing.sby12,
-                  MyTripCard(
-                    myTrip: MyTripCardModel(
-                      tripName: 'Liburan Bali',
-                      destinations: ['Ubud', 'Kuta'],
-                      startDate: DateTime(2026, 12, 10),
-                      endDate: DateTime(2026, 12, 15),
-                      imagePath: "test",
-                    ),
-                  ),
-                  AppSpacing.sby12,
                 ],
               ),
-            ),
+              SliverPadding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                sliver: SliverList(
+                  delegate: SliverChildListDelegate([
+                    AppSpacing.sby16,
+                    AppSearchBar(hintText: 'Search trips'),
+                    AppSpacing.sby16,
+                    ...List.generate(
+                      10,
+                      (_) => Padding(
+                        padding: const EdgeInsets.only(bottom: 12),
+                        child: MyTripCard(
+                          myTrip: MyTripCardModel(
+                            tripName: 'Liburan Bali',
+                            destinations: ['Ubud', 'Kuta'],
+                            startDate: DateTime(2026, 12, 10),
+                            endDate: DateTime(2026, 12, 15),
+                            imagePath: "test",
+                          ),
+                        ),
+                      ),
+                    ),
+                  ]),
+                ),
+              ),
+            ],
           ),
         ),
       ),
