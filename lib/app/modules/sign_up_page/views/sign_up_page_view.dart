@@ -71,7 +71,7 @@ class SignUpPageView extends GetView<SignUpPageController> {
                         ),
                         label: "Sign Up",
                         onPressed: () {
-                          Get.toNamed(Routes.HOME);
+                          Get.toNamed(Routes.TAB_BAR_PAGE);
                         },
                       ),
                       AppSpacing.sby24,

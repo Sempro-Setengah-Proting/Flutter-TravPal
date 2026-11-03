@@ -11,6 +11,7 @@ abstract class Routes {
   static const EXPLORE_PAGE = _Paths.EXPLORE_PAGE;
   static const MY_TRIP_PAGE = _Paths.MY_TRIP_PAGE;
   static const PROFILE_PAGE = _Paths.PROFILE_PAGE;
+  static const TAB_BAR_PAGE = _Paths.TAB_BAR_PAGE;
 }
 
 abstract class _Paths {
@@ -23,4 +24,5 @@ abstract class _Paths {
   static const EXPLORE_PAGE = '/explore-page';
   static const MY_TRIP_PAGE = '/my-trip-page';
   static const PROFILE_PAGE = '/profile-page';
+  static const TAB_BAR_PAGE = '/tab-bar-page';
 }

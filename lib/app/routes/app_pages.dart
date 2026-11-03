@@ -14,6 +14,8 @@ import '../modules/sign_up_page/bindings/sign_up_page_binding.dart';
 import '../modules/sign_up_page/views/sign_up_page_view.dart';
 import '../modules/splash_screen_page/bindings/splash_screen_page_binding.dart';
 import '../modules/splash_screen_page/views/splash_screen_page_view.dart';
+import '../modules/tab_bar_page/bindings/tab_bar_page_binding.dart';
+import '../modules/tab_bar_page/views/tab_bar_page_view.dart';
 
 part 'app_routes.dart';
 
@@ -57,6 +59,11 @@ class AppPages {
       name: _Paths.PROFILE_PAGE,
       page: () => const ProfilePageView(),
       binding: ProfilePageBinding(),
+    ),
+    GetPage(
+      name: _Paths.TAB_BAR_PAGE,
+      page: () => const TabBarPageView(),
+      binding: TabBarPageBinding(),
     ),
   ];
 }

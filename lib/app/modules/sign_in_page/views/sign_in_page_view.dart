@@ -66,7 +66,7 @@ class SignInPageView extends GetView<SignInPageController> {
                 ),
                 label: "Log In",
                 onPressed: () {
-                  Get.toNamed(Routes.HOME);
+                  Get.toNamed(Routes.TAB_BAR_PAGE);
                 },
               ),
               AppSpacing.sby24,
