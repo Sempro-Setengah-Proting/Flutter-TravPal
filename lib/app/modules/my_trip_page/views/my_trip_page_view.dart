@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:trav_pal_flutter/app/constants/app_font.dart';
 import 'package:trav_pal_flutter/app/constants/app_spacing.dart';
 import 'package:trav_pal_flutter/app/data/models/my_trip/my_trip_card_model.dart';
 import 'package:trav_pal_flutter/app/widgets/app_bottom_sheet.dart';
 import 'package:trav_pal_flutter/app/widgets/app_search_bar.dart';
 import 'package:trav_pal_flutter/app/widgets/app_sliver_app_bar.dart';
+import 'package:trav_pal_flutter/app/widgets/app_text_field.dart';
 import 'package:trav_pal_flutter/app/widgets/my_trip_card.dart';
 
 import '../../../constants/app_color.dart';
@@ -33,10 +35,67 @@ class MyTripPageView extends GetView<MyTripPageController> {
               actionIconButton: true,
               actionIcon: Icons.add,
               onActionPressed: () {
+                controller.resetDestinations();
+
                 AppBottomSheet.show<void>(
                   context: context,
                   title: 'Add Trip',
-                  child: const SizedBox.expand(),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const AppTextField(label: 'Trip Name'),
+                        AppSpacing.sby12,
+                        Obx(() {
+                          final destinationCount =
+                              controller.destinationCount.value;
+
+                          return Column(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                              for (
+                                var index = 0;
+                                index < destinationCount;
+                                index++
+                              ) ...[
+                                if (index > 0) AppSpacing.sby12,
+                                AppTextField(
+                                  key: ValueKey('destination_$index'),
+                                  label: index == 0
+                                      ? 'Destination'
+                                      : 'Destination ${index + 1}',
+                                  hintText: 'Where to go? (e.g. city, country, or island)',
+                                  textInputAction: TextInputAction.next,
+                                ),
+                              ],
+                            ],
+                          );
+                        }),
+                        TextButton.icon(
+                          onPressed: controller.addDestination,
+                          style: TextButton.styleFrom(
+                            foregroundColor: AppColor.appPrimary,
+                            padding: EdgeInsets.zero,
+                            alignment: Alignment.centerLeft,
+                            minimumSize: const Size(0, 44),
+                          ),
+                          icon: const Icon(Icons.add, size: 20),
+                          label: const Text(
+                            'Add another destination',
+                            style: AppFont.appRegular14,
+                          ),
+                        ),
+                        const Row(
+                          children: [
+                            Expanded(child: AppTextField(label: 'Start Date')),
+                            AppSpacing.sbx12,
+                            Expanded(child: AppTextField(label: 'End Date')),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
                 );
               },
             ),

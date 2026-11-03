@@ -6,8 +6,6 @@ import 'package:flutter/material.dart';
 import '../constants/app_color.dart';
 import '../constants/app_font.dart';
 
-/// A floating sheet with a padded, bounded content area.
-/// Use [show] to present it with the app's standard modal appearance.
 class AppBottomSheet extends StatelessWidget {
   const AppBottomSheet({
     super.key,

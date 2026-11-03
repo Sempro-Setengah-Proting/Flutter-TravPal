@@ -1,23 +1,13 @@
 import 'package:get/get.dart';
 
 class MyTripPageController extends GetxController {
-  //TODO: Implement MyTripPageController
+  final destinationCount = 1.obs;
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
+  void addDestination() {
+    destinationCount.value++;
   }
 
-  @override
-  void onReady() {
-    super.onReady();
+  void resetDestinations() {
+    destinationCount.value = 1;
   }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
 }
