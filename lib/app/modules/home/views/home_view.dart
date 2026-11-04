@@ -1,9 +1,13 @@
-import 'package:cupertino_native/components/button.dart';
-import 'package:cupertino_native/cupertino_native.dart';
-import 'package:cupertino_native/style/sf_symbol.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:trav_pal_flutter/app/constants/app_color.dart';
+import 'package:trav_pal_flutter/app/constants/app_font.dart';
+import 'package:trav_pal_flutter/app/constants/app_spacing.dart';
+import 'package:trav_pal_flutter/app/widgets/app_destination_card.dart';
+import 'package:trav_pal_flutter/app/widgets/app_hero_card.dart';
+import 'package:trav_pal_flutter/app/widgets/app_hero_destination_card.dart';
+import 'package:trav_pal_flutter/app/widgets/app_search_bar.dart';
+import 'package:trav_pal_flutter/app/widgets/app_sliver_app_bar.dart';
 
 import '../controllers/home_controller.dart';
 
@@ -24,20 +28,101 @@ class HomeView extends GetView<HomeController> {
       child: Scaffold(
         backgroundColor: Colors.transparent,
         extendBodyBehindAppBar: true,
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          title: Text(""),
-          centerTitle: true,
-          backgroundColor: Colors.transparent,
-          surfaceTintColor: Colors.transparent,
-          elevation: 0,
-          scrolledUnderElevation: 0,
-        ),
-        body: const Center(
-          child: CNButton.icon(
-            icon: CNSymbol("favorite"),
-            style: CNButtonStyle.glass,
-          ),
+        body: CustomScrollView(
+          slivers: [
+            AppSliverAppBar(
+              title: 'TravPal',
+              actionIconButton: true,
+              actionIcon: Icons.notifications,
+            ),
+            SliverPadding(
+              padding: EdgeInsetsGeometry.symmetric(horizontal: 16),
+              sliver: SliverList(
+                delegate: SliverChildListDelegate([
+                  AppSpacing.sby16,
+                  AppSearchBar(),
+                  AppSpacing.sby16,
+                  Row(
+                    children: [
+                      Expanded(child: AppHeroCard()),
+                      AppSpacing.sbx10,
+                      Expanded(child: AppHeroCard()),
+                    ],
+                  ),
+                  AppSpacing.sby16,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Itenerary Inspiration",
+                        style: AppFont.appRegular18,
+                      ),
+                      Text(
+                        "See All",
+                        style: AppFont.appBold16.copyWith(
+                          color: AppColor.appPrimary,
+                        ),
+                      ),
+                    ],
+                  ),
+                  AppSpacing.sby8,
+                ]),
+              ),
+            ),
+            SliverPadding(
+              padding: EdgeInsetsGeometry.only(left: 16),
+              sliver: SliverToBoxAdapter(
+                child: SizedBox(
+                  height: 200,
+                  child: ListView.separated(
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      return SizedBox(
+                        width: (MediaQuery.sizeOf(context).width - 32),
+                        child: AppHeroDestinationCard(),
+                      );
+                    },
+                    separatorBuilder: (_, _) => AppSpacing.sbx10,
+                    itemCount: 5,
+                  ),
+                ),
+              ),
+            ),
+            SliverPadding(
+              padding: EdgeInsetsGeometry.symmetric(horizontal: 16),
+              sliver: SliverList(
+                delegate: SliverChildListDelegate([
+                  AppSpacing.sby16,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("Popular Spot", style: AppFont.appRegular18),
+                      Text(
+                        "See All",
+                        style: AppFont.appBold16.copyWith(
+                          color: AppColor.appPrimary,
+                        ),
+                      ),
+                    ],
+                  ),
+                  AppSpacing.sby8,
+                  GridView.builder(
+                    padding: EdgeInsets.zero,
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: 10,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 12,
+                      mainAxisSpacing: 12,
+                      childAspectRatio: 175 / 270,
+                    ),
+                    itemBuilder: (context, index) => const AppDestinationCard(),
+                  ),
+                ]),
+              ),
+            ),
+          ],
         ),
       ),
     );
