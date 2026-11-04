@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:trav_pal_flutter/app/constants/app_color.dart';
 import 'package:trav_pal_flutter/app/constants/app_font.dart';
 import 'package:trav_pal_flutter/app/constants/app_spacing.dart';
+import 'package:trav_pal_flutter/app/data/models/destination/destination_card_model.dart';
 import 'package:trav_pal_flutter/app/widgets/app_destination_card.dart';
 import 'package:trav_pal_flutter/app/widgets/app_hero_card.dart';
 import 'package:trav_pal_flutter/app/widgets/app_hero_destination_card.dart';
@@ -79,7 +80,14 @@ class HomeView extends GetView<HomeController> {
                     itemBuilder: (context, index) {
                       return SizedBox(
                         width: (MediaQuery.sizeOf(context).width - 32),
-                        child: AppHeroDestinationCard(),
+                        // Data contoh sampai data destinasi tersedia.
+                        child: const AppHeroDestinationCard(
+                          destination: DestinationCardModel(
+                            rating: '4.8',
+                            location: 'Jogja, DI Yogyakarta',
+                            duration: '4 days 3 night',
+                          ),
+                        ),
                       );
                     },
                     separatorBuilder: (_, _) => AppSpacing.sbx10,
