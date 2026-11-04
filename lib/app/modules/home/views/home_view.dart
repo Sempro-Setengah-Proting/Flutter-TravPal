@@ -45,9 +45,22 @@ class HomeView extends GetView<HomeController> {
                   AppSpacing.sby16,
                   Row(
                     children: [
-                      Expanded(child: AppHeroCard()),
+                      Expanded(
+                        child: AppHeroCard(
+                          icon: Icons.add,
+                          title: 'Plan a trip',
+                          subTitle:
+                              'Invite friends and plan your trip with them',
+                        ),
+                      ),
                       AppSpacing.sbx10,
-                      Expanded(child: AppHeroCard()),
+                      Expanded(
+                        child: AppHeroCard(
+                          icon: Icons.link,
+                          title: 'Join a trip',
+                          subTitle: 'Join a trip with friends using the code',
+                        ),
+                      ),
                     ],
                   ),
                   AppSpacing.sby16,
@@ -80,7 +93,6 @@ class HomeView extends GetView<HomeController> {
                     itemBuilder: (context, index) {
                       return SizedBox(
                         width: (MediaQuery.sizeOf(context).width - 32),
-                        // Data contoh sampai data destinasi tersedia.
                         child: const AppHeroDestinationCard(
                           destination: DestinationCardModel(
                             rating: '4.8',
